@@ -8,12 +8,12 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func setup(pos: Vector2, drec: Vector2):
-	position = pos
+	position = pos + drec * 15
 	direction = drec
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	position.x += direction.x * speed
 	position.y += direction.y * speed
 	# 子弹超出游戏范围
@@ -21,5 +21,5 @@ func _physics_process(delta: float) -> void:
 	if position.x < 0 or position.x > viewport_rect.x or position.y < 0 or position.y > viewport_rect.y:
 		queue_free()
 
-func _on_body_entered(body: Node2D):
+func _on_body_entered(_body: Node2D):
 	queue_free()

@@ -11,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("LowerTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +27,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("LowerTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -43,7 +43,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("LowerTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +60,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("LowerTorso:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,7 +88,7 @@ shape = SubResource("RectangleShape2D_tuyoq")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1158477244]
 zoom = Vector2(4, 4)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=92175026]
+[node name="LowerTorso" type="Sprite2D" parent="." unique_id=92175026]
 position = Vector2(0, -2)
 scale = Vector2(0.9777777, 1.0666666)
 texture = ExtResource("2_g2els")
@@ -96,6 +96,15 @@ hframes = 8
 vframes = 3
 frame = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=166684159]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LowerTorso" unique_id=166684159]
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_qlg0r")
 autoplay = &"run"
+
+[node name="UpperTorso" type="Sprite2D" parent="." unique_id=830003072]
+position = Vector2(0, -1)
+texture = ExtResource("2_g2els")
+hframes = 8
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UpperTorso" unique_id=1361007616]
