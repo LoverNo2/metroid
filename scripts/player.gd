@@ -9,6 +9,9 @@ var lower_animation
 var lower_sprite
 var upper_animation
 var upper_sprite
+var cross_distance := 50
+var cross_tween: Tween
+
 
 func _ready() -> void:
 	lower_animation = $LowerTorso/AnimationPlayer
@@ -16,11 +19,13 @@ func _ready() -> void:
 	upper_animation = $UpperTorso/AnimationPlayer
 	upper_sprite = $UpperTorso
 
+
 func _apply_gravity(delta: float):
 	if not is_on_floor():
 		velocity.y += gravity_scale * delta
 	else:
 		velocity.y = 0
+
 
 func _handle_move():
 	var direction := Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -44,9 +49,17 @@ func _handle_move():
 	else:
 		lower_animation.play("idle")
 
+
 func _handle_shoot():
 	if Input.is_action_just_pressed("shoot"):
+		$cross/AnimationPlayer.play("fire")
 		emit_signal("shoot", position, get_local_mouse_position().normalized())
+		if cross_tween:
+			cross_tween.kill()
+		cross_tween = get_tree().create_tween()
+		cross_tween.tween_property($cross, "rotation", deg_to_rad(30), 0.1)
+		cross_tween.tween_property($cross, "rotation", 0.0, 0.2)
+
 
 func _handle_upper_texture():
 	var direction := get_local_mouse_position().normalized()
@@ -55,11 +68,16 @@ func _handle_upper_texture():
 	var angle := fmod(angle_degrees + 360 + 22.5, 360)
 	upper_sprite.frame = int(angle / 45) % 8
 
-	
+
+func _uppdate_cross_position():
+	$cross.position = get_local_mouse_position().normalized() * cross_distance
+
+
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
 	_handle_move()
 	_handle_shoot()
 	_handle_upper_texture()
+	_uppdate_cross_position()
 
 	move_and_slide()
