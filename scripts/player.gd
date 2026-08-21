@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-const GRAVITY := 980.0
+const BULLET_SCENE := preload("res://scenes/bullet.tscn")
+
+const GRAVITY := 20
 const JUMP_VELOCITY := -400.0
 const WALK_SPEED := 300.0
 
@@ -30,7 +32,11 @@ func _physics_process(_delta: float) -> void:
 		if not $Timer.is_stopped():
 			print("Timer is still running!")
 		else:
-			print("one shot")
+			var shot_direction := (get_local_mouse_position() - position).normalized()
+			var bullet := BULLET_SCENE.instantiate()
+			bullet.shot_direction = shot_direction
+			bullet.position = position
+			get_tree().current_scene.add_child(bullet)
 			$Timer.start()
 
 	# Move the character.

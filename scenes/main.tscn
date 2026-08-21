@@ -3,8 +3,43 @@
 [ext_resource type="PackedScene" uid="uid://do6dxkcmcr25i" path="res://scenes/plantform.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://dq1n43t1qafvl" path="res://scenes/player.tscn" id="2_0wfyh"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rs6ua"]
+size = Vector2(20, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w0mmh"]
+size = Vector2(1192, 20)
+
 [node name="main" type="Node2D" unique_id=1539162307]
+
+[node name="Borders" type="Node2D" parent="." unique_id=279705118]
+
+[node name="Border_left" type="StaticBody2D" parent="Borders" unique_id=2068458752]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border_left" unique_id=2030930782]
+position = Vector2(-10, 324)
+shape = SubResource("RectangleShape2D_rs6ua")
+
+[node name="Border_right" type="StaticBody2D" parent="Borders" unique_id=1639885905]
+position = Vector2(1172, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border_right" unique_id=840427683]
+position = Vector2(-10, 323)
+shape = SubResource("RectangleShape2D_rs6ua")
+
+[node name="Border_upper" type="StaticBody2D" parent="Borders" unique_id=605085364]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border_upper" unique_id=401187697]
+position = Vector2(576, -10)
+shape = SubResource("RectangleShape2D_w0mmh")
+
+[node name="Border_lower" type="StaticBody2D" parent="Borders" unique_id=726891217]
+position = Vector2(0, 668)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Border_lower" unique_id=116948330]
+position = Vector2(576, -10)
+shape = SubResource("RectangleShape2D_w0mmh")
 
 [node name="Plantform" parent="." unique_id=1555033668 instance=ExtResource("1_o5qli")]
 
 [node name="Player" parent="." unique_id=1587889071 instance=ExtResource("2_0wfyh")]
+position = Vector2(13, 17)

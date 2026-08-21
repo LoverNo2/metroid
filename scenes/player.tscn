@@ -5,6 +5,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8vuu"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1587889071]
+collision_layer = 2
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763002450]
@@ -14,6 +15,10 @@ shape = SubResource("CapsuleShape2D_u8vuu")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1457802921]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 648
 
 [node name="Timer" type="Timer" parent="." unique_id=1939178719]
 one_shot = true
