@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dhehcb5mt8fno"]
+
+[ext_resource type="PackedScene" uid="uid://do6dxkcmcr25i" path="res://scenes/plantform.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://dq1n43t1qafvl" path="res://scenes/player.tscn" id="2_0wfyh"]
+
+[node name="main" type="Node2D" unique_id=1539162307]
+
+[node name="Plantform" parent="." unique_id=1555033668 instance=ExtResource("1_o5qli")]
+
+[node name="Player" parent="." unique_id=1587889071 instance=ExtResource("2_0wfyh")]
