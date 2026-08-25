@@ -3300,4 +3300,4 @@ position = Vector2(13, 17)
 position = Vector2(151, 29)
 
 [node name="Drone3" parent="Drones" unique_id=35797827 instance=ExtResource("4_jyhfs")]
-position = Vector2(473, 120)
+position = Vector2(289, 93)

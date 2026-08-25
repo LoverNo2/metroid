@@ -14,5 +14,7 @@ func _physics_process(_delta: float) -> void:
 	position += shot_direction * BULLET_SPEED * _delta
 
 
-func _on_body_entered(_body: Node2D) -> void:
+func _on_body_entered(body: Node2D) -> void:
+	if body.has_method('hit'):
+		body.hit()
 	queue_free()
