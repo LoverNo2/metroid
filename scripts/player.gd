@@ -4,7 +4,7 @@ const BULLET_SCENE := preload("res://scenes/bullet.tscn")
 
 const GRAVITY := 10
 const JUMP_VELOCITY := -200
-const WALK_SPEED := 100
+const WALK_SPEED := 150
 
 const TORSE_SPRITE_MAP := {
 	Vector2i(-1, -1): 5,
