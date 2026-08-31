@@ -1,9 +1,11 @@
 [gd_scene format=4 uid="uid://dhehcb5mt8fno"]
 
+[ext_resource type="Script" uid="uid://baug6sjxte6y2" path="res://main.gd" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dq1n43t1qafvl" path="res://scenes/player.tscn" id="2_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://mwggl3x1d0lj" path="res://graphics/tilesets/subway.png" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bbwxmurrgf40w" path="res://scenes/drone.tscn" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://dapp82wjt6pbw" path="res://graphics/tilesets/walls.png" id="4_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://druf45wirvwfo" path="res://graphics/lights/l3.png" id="5_tbgi4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tefeu"]
 texture = ExtResource("3_jyhfs")
@@ -3246,7 +3248,17 @@ size = Vector2(20, 648)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0mmh"]
 size = Vector2(1192, 20)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jyhfs"]
+polygon = PackedVector2Array(404, 87, 447, 106, 426, 146)
+
+[sub_resource type="Gradient" id="Gradient_jyhfs"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1vivr"]
+gradient = SubResource("Gradient_jyhfs")
+fill_from = Vector2(0.45904437, 0.62286687)
+
 [node name="main" type="Node2D" unique_id=1539162307]
+script = ExtResource("1_tefeu")
 
 [node name="Layers" type="Node2D" parent="." unique_id=1585010119]
 
@@ -3301,3 +3313,28 @@ position = Vector2(151, 29)
 
 [node name="Drone3" parent="Drones" unique_id=35797827 instance=ExtResource("4_jyhfs")]
 position = Vector2(289, 93)
+
+[node name="Lights" type="Node2D" parent="." unique_id=272058594]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Lights" unique_id=142199621]
+position = Vector2(-4, -82)
+occluder = SubResource("OccluderPolygon2D_jyhfs")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lights" unique_id=91129521]
+color = Color(0.5963672, 0.59636724, 0.59636724, 1)
+blend_mode = 2
+shadow_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="Lights" unique_id=1462582864]
+position = Vector2(1024, 127)
+energy = 4.85
+texture = SubResource("GradientTexture2D_1vivr")
+texture_scale = 3.95
+
+[node name="PointLight2D2" type="PointLight2D" parent="Lights" unique_id=651440274]
+position = Vector2(127, 72)
+texture = ExtResource("5_tbgi4")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Lights" unique_id=876567187]
+position = Vector2(319, 152)
+texture = ExtResource("5_tbgi4")
