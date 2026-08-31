@@ -17,6 +17,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func explode():
+	speed = 0
 	$AnimatedSprite2D.hide()
 	$Explosion.show()
 	$AnimationPlayer.play("explosion")
